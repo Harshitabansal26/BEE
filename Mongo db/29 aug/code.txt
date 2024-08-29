@@ -1,0 +1,215 @@
+
+PS C:\Users\Admin> mongosh
+Current Mongosh Log ID: 66cff66911165e3b362710bb
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.0
+Using MongoDB:          7.0.14
+Using Mongosh:          2.3.0
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-08-29T09:41:20.214+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use 29aug
+switched to db 29aug
+29aug> db.createCollection("content")
+{ ok: 1 }
+29aug> db.content.insertOne([
+...     { name: "Dr. Smith", age: 45, subject: "Math", rating: 4.8 },
+...     { name: "Prof. Johnson", age: 50, subject: "Physics", rating: 4.7 },
+...     { name: "Dr. Brown", age: 38, subject: "Chemistry", rating: 4.9 },
+...     { name: "Prof. Davis", age: 42, subject: "Biology", rating: 4.6 },
+...     { name: "Dr. Miller", age: 47, subject: "English", rating: 4.5 }
+...   ])
+{
+  acknowledged: true,
+  insertedId: ObjectId('66cff77b11165e3b362710bc')
+}
+29aug> db.content.insertOne([ { name: "Dr. Smith", age: 45, subject: "Math", rating: 4.8 }])
+{
+  acknowledged: true,
+  insertedId: ObjectId('66cff7b711165e3b362710bd')
+}
+29aug> db.content.insertOne([{ name: "d", age: 23, marks: 14, subject: "eng" },
+...     { name: "e", age: 24, marks: 15, subject: "eng" },
+...     { name: "f", age: 25, marks: 16, subject: "eng" }
+...   ])
+{
+  acknowledged: true,
+  insertedId: ObjectId('66cff82a11165e3b362710be')
+}
+29aug> db.content.insertOne({date:ISODate()});
+{
+  acknowledged: true,
+  insertedId: ObjectId('66cff84b11165e3b362710bf')
+}
+29aug> db.content.find()
+[
+  {
+    '0': { name: 'Dr. Smith', age: 45, subject: 'Math', rating: 4.8 },
+    '1': { name: 'Prof. Johnson', age: 50, subject: 'Physics', rating: 4.7 },
+    '2': { name: 'Dr. Brown', age: 38, subject: 'Chemistry', rating: 4.9 },
+    '3': { name: 'Prof. Davis', age: 42, subject: 'Biology', rating: 4.6 },
+    '4': { name: 'Dr. Miller', age: 47, subject: 'English', rating: 4.5 },
+    _id: ObjectId('66cff77b11165e3b362710bc')
+  },
+  {
+    '0': { name: 'Dr. Smith', age: 45, subject: 'Math', rating: 4.8 },
+    _id: ObjectId('66cff7b711165e3b362710bd')
+  },
+  {
+    '0': { name: 'd', age: 23, marks: 14, subject: 'eng' },
+    '1': { name: 'e', age: 24, marks: 15, subject: 'eng' },
+    '2': { name: 'f', age: 25, marks: 16, subject: 'eng' },
+    _id: ObjectId('66cff82a11165e3b362710be')
+  },
+  {
+    _id: ObjectId('66cff84b11165e3b362710bf'),
+    date: ISODate('2024-08-29T04:25:47.639Z')
+  }
+]
+29aug> db.content.find().pretty();
+[
+  {
+    '0': { name: 'Dr. Smith', age: 45, subject: 'Math', rating: 4.8 },
+    '1': { name: 'Prof. Johnson', age: 50, subject: 'Physics', rating: 4.7 },
+    '2': { name: 'Dr. Brown', age: 38, subject: 'Chemistry', rating: 4.9 },
+    '3': { name: 'Prof. Davis', age: 42, subject: 'Biology', rating: 4.6 },
+    '4': { name: 'Dr. Miller', age: 47, subject: 'English', rating: 4.5 },
+    _id: ObjectId('66cff77b11165e3b362710bc')
+  },
+  {
+    '0': { name: 'Dr. Smith', age: 45, subject: 'Math', rating: 4.8 },
+    _id: ObjectId('66cff7b711165e3b362710bd')
+  },
+  {
+    '0': { name: 'd', age: 23, marks: 14, subject: 'eng' },
+    '1': { name: 'e', age: 24, marks: 15, subject: 'eng' },
+    '2': { name: 'f', age: 25, marks: 16, subject: 'eng' },
+    _id: ObjectId('66cff82a11165e3b362710be')
+  },
+  {
+    _id: ObjectId('66cff84b11165e3b362710bf'),
+    date: ISODate('2024-08-29T04:25:47.639Z')
+  }
+]
+29aug> db.content.insertMany([{ name: "d", age: 23, marks: 14, subject: "eng" }, { name: "e", age: 24, marks: 15, subject: "eng" }, { name: "f", age: 25, marks: 16, subject: "eng" }] )
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('66cffc2011165e3b362710c0'),
+    '1': ObjectId('66cffc2011165e3b362710c1'),
+    '2': ObjectId('66cffc2011165e3b362710c2')
+  }
+}
+29aug> db.content.find().pretty();
+[
+  {
+    '0': { name: 'Dr. Smith', age: 45, subject: 'Math', rating: 4.8 },
+    '1': { name: 'Prof. Johnson', age: 50, subject: 'Physics', rating: 4.7 },
+    '2': { name: 'Dr. Brown', age: 38, subject: 'Chemistry', rating: 4.9 },
+    '3': { name: 'Prof. Davis', age: 42, subject: 'Biology', rating: 4.6 },
+    '4': { name: 'Dr. Miller', age: 47, subject: 'English', rating: 4.5 },
+    _id: ObjectId('66cff77b11165e3b362710bc')
+  },
+  {
+    '0': { name: 'Dr. Smith', age: 45, subject: 'Math', rating: 4.8 },
+    _id: ObjectId('66cff7b711165e3b362710bd')
+  },
+  {
+    '0': { name: 'd', age: 23, marks: 14, subject: 'eng' },
+    '1': { name: 'e', age: 24, marks: 15, subject: 'eng' },
+    '2': { name: 'f', age: 25, marks: 16, subject: 'eng' },
+    _id: ObjectId('66cff82a11165e3b362710be')
+  },
+  {
+    _id: ObjectId('66cff84b11165e3b362710bf'),
+    date: ISODate('2024-08-29T04:25:47.639Z')
+  },
+  {
+    _id: ObjectId('66cffc2011165e3b362710c0'),
+    name: 'd',
+    age: 23,
+    marks: 14,
+    subject: 'eng'
+  },
+  {
+    _id: ObjectId('66cffc2011165e3b362710c1'),
+    name: 'e',
+    age: 24,
+    marks: 15,
+    subject: 'eng'
+  },
+  {
+    _id: ObjectId('66cffc2011165e3b362710c2'),
+    name: 'f',
+    age: 25,
+    marks: 16,
+    subject: 'eng'
+  }
+]
+29aug> db.content.find()
+[
+  {
+    '0': { name: 'Dr. Smith', age: 45, subject: 'Math', rating: 4.8 },
+    '1': { name: 'Prof. Johnson', age: 50, subject: 'Physics', rating: 4.7 },
+    '2': { name: 'Dr. Brown', age: 38, subject: 'Chemistry', rating: 4.9 },
+    '3': { name: 'Prof. Davis', age: 42, subject: 'Biology', rating: 4.6 },
+    '4': { name: 'Dr. Miller', age: 47, subject: 'English', rating: 4.5 },
+    _id: ObjectId('66cff77b11165e3b362710bc')
+  },
+  {
+    '0': { name: 'Dr. Smith', age: 45, subject: 'Math', rating: 4.8 },
+    _id: ObjectId('66cff7b711165e3b362710bd')
+  },
+  {
+    '0': { name: 'd', age: 23, marks: 14, subject: 'eng' },
+    '1': { name: 'e', age: 24, marks: 15, subject: 'eng' },
+    '2': { name: 'f', age: 25, marks: 16, subject: 'eng' },
+    _id: ObjectId('66cff82a11165e3b362710be')
+  },
+  {
+    _id: ObjectId('66cff84b11165e3b362710bf'),
+    date: ISODate('2024-08-29T04:25:47.639Z')
+  },
+  {
+    _id: ObjectId('66cffc2011165e3b362710c0'),
+    name: 'd',
+    age: 23,
+    marks: 14,
+    subject: 'eng'
+  },
+  {
+    _id: ObjectId('66cffc2011165e3b362710c1'),
+    name: 'e',
+    age: 24,
+    marks: 15,
+    subject: 'eng'
+  },
+  {
+    _id: ObjectId('66cffc2011165e3b362710c2'),
+    name: 'f',
+    age: 25,
+    marks: 16,
+    subject: 'eng'
+  }
+]
+29aug> db.content.findOne({'0.name':'Dr. Smith'})
+{
+  '0': { name: 'Dr. Smith', age: 45, subject: 'Math', rating: 4.8 },
+  '1': { name: 'Prof. Johnson', age: 50, subject: 'Physics', rating: 4.7 },
+  '2': { name: 'Dr. Brown', age: 38, subject: 'Chemistry', rating: 4.9 },
+  '3': { name: 'Prof. Davis', age: 42, subject: 'Biology', rating: 4.6 },
+  '4': { name: 'Dr. Miller', age: 47, subject: 'English', rating: 4.5 },
+  _id: ObjectId('66cff77b11165e3b362710bc')
+}
+29aug> db.content.findOne({_id: ObjectId('66cffc2011165e3b362710c2')})
+{
+  _id: ObjectId('66cffc2011165e3b362710c2'),
+  name: 'f',
+  age: 25,
+  marks: 16,
+  subject: 'eng'
+}
