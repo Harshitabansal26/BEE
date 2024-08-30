@@ -316,4 +316,179 @@ SyntaxError: Unexpected token (1:23)
     garde: 'A'
   }
 ]
-29aug>
+29aug> db.content.find({address:{$exists:true}}).pretty()
+[
+  {
+    '0': { name: 'Dr. Smith', age: 45, subject: 'Math', rating: 4.8 },
+    '1': { name: 'Prof. Johnson', age: 50, subject: 'Physics', rating: 4.7 },
+    '2': { name: 'Dr. Brown', age: 38, subject: 'Chemistry', rating: 4.9 },
+    '3': { name: 'Prof. Davis', age: 42, subject: 'Biology', rating: 4.6 },
+    '4': { name: 'Dr. Miller', age: 47, subject: 'English', rating: 4.5 },
+    _id: ObjectId('66cff77b11165e3b362710bc'),
+    address: 'chitkara university',
+    subject: 'datascience',
+    garde: 'A'
+  },
+  {
+    '0': { name: 'Dr. Smith', age: 45, subject: 'Math', rating: 4.8 },
+    _id: ObjectId('66cff7b711165e3b362710bd'),
+    address: 'chitkara university',
+    subject: 'datascience',
+    garde: 'A'
+  },
+  {
+    '0': { name: 'd', age: 23, marks: 14, subject: 'eng' },
+    '1': { name: 'e', age: 24, marks: 15, subject: 'eng' },
+    '2': { name: 'f', age: 25, marks: 16, subject: 'eng' },
+    _id: ObjectId('66cff82a11165e3b362710be'),
+    address: 'chitkara university',
+    subject: 'datascience',
+    garde: 'A'
+  },
+  {
+    _id: ObjectId('66cff84b11165e3b362710bf'),
+    date: ISODate('2024-08-29T04:25:47.639Z'),
+    address: 'chitkara university',
+    subject: 'datascience',
+    garde: 'A'
+  },
+  {
+    _id: ObjectId('66cffc2011165e3b362710c0'),
+    name: 'd',
+    age: 23,
+    marks: 14,
+    subject: 'datascience',
+    address: 'chitkara university',
+    garde: 'A'
+  },
+  {
+    _id: ObjectId('66cffc2011165e3b362710c1'),
+    name: 'e',
+    age: 24,
+    marks: 15,
+    subject: 'datascience',
+    address: 'chitkara university',
+    garde: 'A'
+  },
+  {
+    _id: ObjectId('66cffc2011165e3b362710c2'),
+    name: 'f',
+    age: 25,
+    marks: 16,
+    subject: 'datascience',
+    address: 'chitkara university',
+    garde: 'A'
+  }
+]
+29aug> db.content.find({address:{$exists:false}}).pretty()
+[
+  {
+    _id: ObjectId('66d158771649b5b21d2710bc'),
+    name: 'StudentX',
+    age: 22,
+    marks: 90
+  }
+]
+29aug> db.content.find({age:{$type:"number"}}).pretty()
+[
+  {
+    _id: ObjectId('66cffc2011165e3b362710c0'),
+    name: 'd',
+    age: 23,
+    marks: 14,
+    subject: 'datascience',
+    address: 'chitkara university',
+    garde: 'A'
+  },
+  {
+    _id: ObjectId('66cffc2011165e3b362710c1'),
+    name: 'e',
+    age: 24,
+    marks: 15,
+    subject: 'datascience',
+    address: 'chitkara university',
+    garde: 'A'
+  },
+  {
+    _id: ObjectId('66cffc2011165e3b362710c2'),
+    name: 'f',
+    age: 25,
+    marks: 16,
+    subject: 'datascience',
+    address: 'chitkara university',
+    garde: 'A'
+  },
+  {
+    _id: ObjectId('66d158771649b5b21d2710bc'),
+    name: 'StudentX',
+    age: 22,
+    marks: 90
+  }
+]
+29aug> db.content.find({marks:{$type:"string"}}).pretty()
+
+29aug> db.content.find({address:{$exists:true,$type:"string"}}).pretty()
+[
+  {
+    '0': { name: 'Dr. Smith', age: 45, subject: 'Math', rating: 4.8 },
+    '1': { name: 'Prof. Johnson', age: 50, subject: 'Physics', rating: 4.7 },
+    '2': { name: 'Dr. Brown', age: 38, subject: 'Chemistry', rating: 4.9 },
+    '3': { name: 'Prof. Davis', age: 42, subject: 'Biology', rating: 4.6 },
+    '4': { name: 'Dr. Miller', age: 47, subject: 'English', rating: 4.5 },
+    _id: ObjectId('66cff77b11165e3b362710bc'),
+    address: 'chitkara university',
+    subject: 'datascience',
+    garde: 'A'
+  },
+  {
+    '0': { name: 'Dr. Smith', age: 45, subject: 'Math', rating: 4.8 },
+    _id: ObjectId('66cff7b711165e3b362710bd'),
+    address: 'chitkara university',
+    subject: 'datascience',
+    garde: 'A'
+  },
+  {
+    '0': { name: 'd', age: 23, marks: 14, subject: 'eng' },
+    '1': { name: 'e', age: 24, marks: 15, subject: 'eng' },
+    '2': { name: 'f', age: 25, marks: 16, subject: 'eng' },
+    _id: ObjectId('66cff82a11165e3b362710be'),
+    address: 'chitkara university',
+    subject: 'datascience',
+    garde: 'A'
+  },
+  {
+    _id: ObjectId('66cff84b11165e3b362710bf'),
+    date: ISODate('2024-08-29T04:25:47.639Z'),
+    address: 'chitkara university',
+    subject: 'datascience',
+    garde: 'A'
+  },
+  {
+    _id: ObjectId('66cffc2011165e3b362710c0'),
+    name: 'd',
+    age: 23,
+    marks: 14,
+    subject: 'datascience',
+    address: 'chitkara university',
+    garde: 'A'
+  },
+  {
+    _id: ObjectId('66cffc2011165e3b362710c1'),
+    name: 'e',
+    age: 24,
+    marks: 15,
+    subject: 'datascience',
+    address: 'chitkara university',
+    garde: 'A'
+  },
+  {
+    _id: ObjectId('66cffc2011165e3b362710c2'),
+    name: 'f',
+    age: 25,
+    marks: 16,
+    subject: 'datascience',
+    address: 'chitkara university',
+    garde: 'A'
+  }
+]
+
