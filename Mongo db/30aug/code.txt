@@ -1,0 +1,319 @@
+Microsoft Windows [Version 10.0.22631.4112]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Admin>mongosh
+Current Mongosh Log ID: 66d142a11649b5b21d2710bb
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.0
+Using MongoDB:          7.0.14
+Using Mongosh:          2.3.0
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-08-29T09:41:20.214+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> db.col.countDocuments
+[Function: countDocuments] AsyncFunction {
+  apiVersions: [ 1, Infinity ],
+  serverVersions: [ '4.0.3', '999.999.999' ],
+  returnsPromise: true,
+  topologies: [ 'ReplSet', 'Sharded', 'LoadBalanced', 'Standalone' ],
+  returnType: { type: 'unknown', attributes: {} },
+  deprecated: false,
+  platforms: [ 'Compass', 'Browser', 'CLI' ],
+  isDirectShellCommand: false,
+  acceptsRawInput: false,
+  shellCommandCompleter: undefined,
+  help: [Function (anonymous)] Help
+}
+test> use 29aug
+switched to db 29aug
+29aug> db.col.countDocuments
+[Function: countDocuments] AsyncFunction {
+  apiVersions: [ 1, Infinity ],
+  serverVersions: [ '4.0.3', '999.999.999' ],
+  returnsPromise: true,
+  topologies: [ 'ReplSet', 'Sharded', 'LoadBalanced', 'Standalone' ],
+  returnType: { type: 'unknown', attributes: {} },
+  deprecated: false,
+  platforms: [ 'Compass', 'Browser', 'CLI' ],
+  isDirectShellCommand: false,
+  acceptsRawInput: false,
+  shellCommandCompleter: undefined,
+  help: [Function (anonymous)] Help
+}
+29aug> db.col.estimatedDocumentCount()
+0
+29aug> db.content.estimatedDocumentCount()
+7
+29aug> db.content.countDocuments
+[Function: countDocuments] AsyncFunction {
+  apiVersions: [ 1, Infinity ],
+  serverVersions: [ '4.0.3', '999.999.999' ],
+  returnsPromise: true,
+  topologies: [ 'ReplSet', 'Sharded', 'LoadBalanced', 'Standalone' ],
+  returnType: { type: 'unknown', attributes: {} },
+  deprecated: false,
+  platforms: [ 'Compass', 'Browser', 'CLI' ],
+  isDirectShellCommand: false,
+  acceptsRawInput: false,
+  shellCommandCompleter: undefined,
+  help: [Function (anonymous)] Help
+}
+29aug> db.content.countDocuments()
+7
+29aug> db.content.estimatedDocumentCount()
+7
+29aug> db.content.estimatedDocumentCount("name")
+7
+29aug> db.content.estimatedDocumentCount("date")
+7
+29aug> db.content..updateMany({},)
+Uncaught:
+SyntaxError: Unexpected token (1:11)
+
+> 1 | db.content..updateMany({},)
+    |            ^
+  2 |
+
+29aug> db.content..updateMany({},{$set: {subject:"datascience",address:"chitkara university"}})
+Uncaught:
+SyntaxError: Unexpected token (1:11)
+
+> 1 | db.content..updateMany({},{$set: {subject:"datascience",address:"chitkara university"}})
+    |            ^
+  2 |
+
+29aug> db.content.updateMany({},{$set: {subject:"datascience",address:"chitkara university"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 7,
+  modifiedCount: 7,
+  upsertedCount: 0
+}
+29aug> db.content.updateMany({},{$set: {address:"chitkara university"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 7,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+29aug> db.content.updateMany({},{sub:"eng"},{$set:{sub:"datascience"}})
+MongoInvalidArgumentError: Update document requires atomic operators
+29aug> db.content.updateMany({sub:"eng"},{$set:{sub:"datascience"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+29aug> db.content.updateMany()
+MongoshInvalidInputError: [COMMON-10001] Missing required argument at position 0 (Collection.updateMany)
+29aug> db.content.updateMany({},{$set:{garde : 'A'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 7,
+  modifiedCount: 7,
+  upsertedCount: 0
+}
+29aug> db.content.find({age:22,marks:90})
+
+29aug> db.content.insertOne({name: "StudentX",
+...   age: 22,
+...   marks: 90})
+{
+  acknowledged: true,
+  insertedId: ObjectId('66d158771649b5b21d2710bc')
+}
+29aug> db.content.find({age:22,marks:90})
+[
+  {
+    _id: ObjectId('66d158771649b5b21d2710bc'),
+    name: 'StudentX',
+    age: 22,
+    marks: 90
+  }
+]
+29aug> db.content.find({marks:{$gte:80},age:{$gte:18}})
+[
+  {
+    _id: ObjectId('66d158771649b5b21d2710bc'),
+    name: 'StudentX',
+    age: 22,
+    marks: 90
+  }
+]
+29aug> db.content.find({grade:'A'})
+
+29aug> db.content.find({garde:'A'})
+[
+  {
+    '0': { name: 'Dr. Smith', age: 45, subject: 'Math', rating: 4.8 },
+    '1': { name: 'Prof. Johnson', age: 50, subject: 'Physics', rating: 4.7 },
+    '2': { name: 'Dr. Brown', age: 38, subject: 'Chemistry', rating: 4.9 },
+    '3': { name: 'Prof. Davis', age: 42, subject: 'Biology', rating: 4.6 },
+    '4': { name: 'Dr. Miller', age: 47, subject: 'English', rating: 4.5 },
+    _id: ObjectId('66cff77b11165e3b362710bc'),
+    address: 'chitkara university',
+    subject: 'datascience',
+    garde: 'A'
+  },
+  {
+    '0': { name: 'Dr. Smith', age: 45, subject: 'Math', rating: 4.8 },
+    _id: ObjectId('66cff7b711165e3b362710bd'),
+    address: 'chitkara university',
+    subject: 'datascience',
+    garde: 'A'
+  },
+  {
+    '0': { name: 'd', age: 23, marks: 14, subject: 'eng' },
+    '1': { name: 'e', age: 24, marks: 15, subject: 'eng' },
+    '2': { name: 'f', age: 25, marks: 16, subject: 'eng' },
+    _id: ObjectId('66cff82a11165e3b362710be'),
+    address: 'chitkara university',
+    subject: 'datascience',
+    garde: 'A'
+  },
+  {
+    _id: ObjectId('66cff84b11165e3b362710bf'),
+    date: ISODate('2024-08-29T04:25:47.639Z'),
+    address: 'chitkara university',
+    subject: 'datascience',
+    garde: 'A'
+  },
+  {
+    _id: ObjectId('66cffc2011165e3b362710c0'),
+    name: 'd',
+    age: 23,
+    marks: 14,
+    subject: 'datascience',
+    address: 'chitkara university',
+    garde: 'A'
+  },
+  {
+    _id: ObjectId('66cffc2011165e3b362710c1'),
+    name: 'e',
+    age: 24,
+    marks: 15,
+    subject: 'datascience',
+    address: 'chitkara university',
+    garde: 'A'
+  },
+  {
+    _id: ObjectId('66cffc2011165e3b362710c2'),
+    name: 'f',
+    age: 25,
+    marks: 16,
+    subject: 'datascience',
+    address: 'chitkara university',
+    garde: 'A'
+  }
+]
+29aug> db.content.find({$and: [ {{age:{$gte:18}},marks:{$gte:80}}]}).pretty(
+)
+Uncaught:
+SyntaxError: Unexpected token (1:26)
+
+> 1 | db.content.find({$and: [ {{age:{$gte:18}},marks:{$gte:80}}]}).pretty()
+    |                           ^
+  2 |
+29aug> db.content.find({$and: [ {age:{$gte:18}},{marks:{$gte:80}}]}).pretty()
+[
+  {
+    _id: ObjectId('66d158771649b5b21d2710bc'),
+    name: 'StudentX',
+    age: 22,
+    marks: 90
+  }
+]
+29aug> db.content.find({garde:{$not:{$eq:"A"}}})
+[
+  {
+    _id: ObjectId('66d158771649b5b21d2710bc'),
+    name: 'StudentX',
+    age: 22,
+    marks: 90
+  }
+]
+29aug> db.content.find({$nor: [ {age:{$gte:18}},{marks:{$gte:80}}]}).pretty()
+[
+  {
+    '0': { name: 'Dr. Smith', age: 45, subject: 'Math', rating: 4.8 },
+    '1': { name: 'Prof. Johnson', age: 50, subject: 'Physics', rating: 4.7 },
+    '2': { name: 'Dr. Brown', age: 38, subject: 'Chemistry', rating: 4.9 },
+    '3': { name: 'Prof. Davis', age: 42, subject: 'Biology', rating: 4.6 },
+    '4': { name: 'Dr. Miller', age: 47, subject: 'English', rating: 4.5 },
+    _id: ObjectId('66cff77b11165e3b362710bc'),
+    address: 'chitkara university',
+    subject: 'datascience',
+    garde: 'A'
+  },
+  {
+    '0': { name: 'Dr. Smith', age: 45, subject: 'Math', rating: 4.8 },
+    _id: ObjectId('66cff7b711165e3b362710bd'),
+    address: 'chitkara university',
+    subject: 'datascience',
+    garde: 'A'
+  },
+  {
+    '0': { name: 'd', age: 23, marks: 14, subject: 'eng' },
+    '1': { name: 'e', age: 24, marks: 15, subject: 'eng' },
+    '2': { name: 'f', age: 25, marks: 16, subject: 'eng' },
+    _id: ObjectId('66cff82a11165e3b362710be'),
+    address: 'chitkara university',
+    subject: 'datascience',
+    garde: 'A'
+  },
+  {
+    _id: ObjectId('66cff84b11165e3b362710bf'),
+    date: ISODate('2024-08-29T04:25:47.639Z'),
+    address: 'chitkara university',
+    subject: 'datascience',
+    garde: 'A'
+  }
+]
+29aug> db.content.find({$or:[{{age:{$lt:20}},{marks:{$lt:90}}]}).pretty()
+Uncaught:
+SyntaxError: Unexpected token (1:23)
+
+> 1 | db.content.find({$or:[{{age:{$lt:20}},{marks:{$lt:90}}]}).pretty()
+    |                        ^
+  2 |
+
+29aug> db.content.find({$or:[{age:{$lt:20}},{marks:{$lt:90}}]}).pretty()
+[
+  {
+    _id: ObjectId('66cffc2011165e3b362710c0'),
+    name: 'd',
+    age: 23,
+    marks: 14,
+    subject: 'datascience',
+    address: 'chitkara university',
+    garde: 'A'
+  },
+  {
+    _id: ObjectId('66cffc2011165e3b362710c1'),
+    name: 'e',
+    age: 24,
+    marks: 15,
+    subject: 'datascience',
+    address: 'chitkara university',
+    garde: 'A'
+  },
+  {
+    _id: ObjectId('66cffc2011165e3b362710c2'),
+    name: 'f',
+    age: 25,
+    marks: 16,
+    subject: 'datascience',
+    address: 'chitkara university',
+    garde: 'A'
+  }
+]
+29aug>
