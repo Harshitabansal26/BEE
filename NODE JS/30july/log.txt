@@ -1,7 +1,0 @@
-
-1722313974156 with url / and method GET 
-1722313974211 with url /favicon.ico and method GET 
-1722313981665 with url /register and method GET 
-1722314021551 with url / and method GET 
-1722314053255 with url /register and method GET 
-1722314155905 with url /register and method GET 
